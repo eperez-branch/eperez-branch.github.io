@@ -10,17 +10,26 @@
    <!-- End Load Branch Web SDK -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>My Test Website</title>
+   <script src="events.js"></script>
    <meta charset="UTF-8">
    <style>
       body {
-       font-family: Arial, Helvetica, sans-serif;
-    }
- </style>
+        font-family: Arial, Helvetica, sans-serif;
+     }
+  </style>
 </head>
 <body>
-
-   <h1>My Website</h1>
-   <p>A test website created for testing.</p>
-
+   <!-- Events for the Branch Web SDK -->
+   <main>
+      <h1>My Website</h1>
+      <p>A test website created for testing.</p>
+      <div class="button-container">
+         <button onclick="completedRegistration()">Complete Registration event</button>
+         <button onclick="customEvent()">Custom event</button>
+         <button onclick="addToCart()">Add To Cart event</button>
+         <button onclick="purchaseComplete()">Confirm Purchases event</button>
+      </div>
+   </main>
+   <!-- End Events for the Branch Web SDK -->
 </body>
 </html>
