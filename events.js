@@ -1,6 +1,23 @@
 function displayPhrase()
 {
-    document.getElementById("demo").innerHTML = 'New Phrase';
+    // document.getElementById("demo").innerHTML = 'New Phrase';
+    // document.getElementById("demo").innerHTML = link || err;
+    var linkData = {
+        campaign: 'content 123',
+        channel: 'facebook',
+        feature: 'dashboard',
+        stage: 'new user',
+        tags: [ 'tag1', 'tag2', 'tag3' ],
+        alias: '',
+        data: {
+            'custom_bool': true,
+            'custom_int': Date.now(),
+            'custom_string': 'hello',
+        }
+    }
+    branch.link(linkData, function(err, link) {
+        document.getElementById("demo").innerHTML = link || err;
+    })
 };
 
 function customEvent () {
