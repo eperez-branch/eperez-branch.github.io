@@ -10,7 +10,7 @@ function displayPhrase()
         tags: [ 'tag1', 'tag2', 'tag3' ],
         alias: '',
         $fallback_url_uk: 'https://music.amazon.co.uk/genres/zEy210aB',
-        $desktop_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        $desktop_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         data: {
             'custom_bool': true,
             'custom_int': Date.now(),
