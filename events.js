@@ -1,3 +1,8 @@
+function displayPhrase()
+{
+    document.getElementById("demo").innerHTML = 'New Phrase';
+};
+
 function customEvent () {
    var custom_data = {
       "Web Event Property Key 1": "Web Event Property Val 1",
