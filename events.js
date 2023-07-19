@@ -13,6 +13,8 @@ function displayPhrase()
             'custom_bool': true,
             'custom_int': Date.now(),
             'custom_string': 'hello',
+            '$fallback_url_uk': 'https://music.amazon.co.uk/genres/zEy210aB',
+            '$desktop_url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
         }
     }
     branch.link(linkData, function(err, link) {
