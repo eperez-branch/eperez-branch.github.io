@@ -147,13 +147,13 @@ function readDeeplinkData() {
     });
 }
 
-function login() {
+function doLogin() {
     branch.setIdentity('123456', function (err, data) {
         console.log(err, data);
     });
 }
 
-function logout() {
+function doLogout() {
     branch.logout(function(err, data) {
         console.log(err, data);
     });
