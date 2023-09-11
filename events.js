@@ -141,6 +141,8 @@ function purchaseComplete () {
       );
 }
 
-function openDeeplink () {
-
+function readDeeplinkData () {
+    branch.data(function(err, data) {
+        console.log(err, data);
+    });
 }
