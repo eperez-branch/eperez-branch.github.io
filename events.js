@@ -22,7 +22,7 @@ function displayPhrase()
     })
 };
 
-function customEvent () {
+function customEvent() {
    var custom_data = {
       "Web Event Property Key 1": "Web Event Property Val 1",
       "Web Event Property Key 2": "Web Event Property Val 2",
@@ -35,7 +35,7 @@ function customEvent () {
       );
 };
 
-function completedRegistration () {
+function completedRegistration() {
    var event_and_custom_data = {
       "transaction_id": "tras_Id_1234",
       "description": "Preferred purchase",
@@ -52,7 +52,7 @@ function completedRegistration () {
       );
 };
 
-function addToCart () {
+function addToCart() {
    var event_and_custom_data = {
       "transaction_id": "tras_Id_1232343434",
       "currency": "USD",
@@ -97,7 +97,7 @@ function addToCart () {
 };
 
 
-function purchaseComplete () {
+function purchaseComplete() {
    var event_and_custom_data = {
       "transaction_id": "tras_Id_1232343434",
       "currency": "USD",
@@ -141,7 +141,7 @@ function purchaseComplete () {
       );
 }
 
-function readDeeplinkData () {
+function readDeeplinkData() {
     branch.data(function(err, data) {
         console.log(err, data);
     });
