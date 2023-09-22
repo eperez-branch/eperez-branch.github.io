@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const options = {
             method: 'POST',
             headers: {
-                accept: 'image/png', // Specify that you're expecting a PNG response
+                accept: 'image/png',
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(requestBody) // Convert the request body to JSON string
+            body: JSON.stringify(requestBody)
         };
 
         fetch(apiUrl, options)
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
-                return response.blob(); // Get the response as a blob
+                return response.blob();
             })
             .then((blob) => {
                 // Create a URL for the blob response
@@ -53,12 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const imageContainer = document.getElementById("imageContainer");
                 imageContainer.innerHTML = ""; // Clear previous content
                 imageContainer.appendChild(imageElement);
-
-                // Programmatically trigger a click event on an anchor to initiate download
-                const downloadLink = document.createElement("a");
-                downloadLink.href = imageUrl;
-                downloadLink.download = "1DownloadTheAppAZ.png";
-                downloadLink.click();
 
                 // Revoke the object URL to release resources
                 URL.revokeObjectURL(imageUrl);
