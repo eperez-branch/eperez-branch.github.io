@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>My QR Site</title>
-   <meta charset="UTF-8">
-   <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-     }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Image Viewer</title>
+    <style>
+        /* Add your CSS styles here */
+        #imageContainer {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+    </style>
 </head>
 <body>
-   <main>
-      <h1>QR Page</h1>
-      <p>A page created for QR code creation.</p>
-   </main>
+    <h1>API Image Viewer</h1>
+    <button id="fetchButton">Fetch Image</button>
+    <div id="imageContainer"></div>
+
+    <script>
+        document.getElementById("fetchButton").addEventListener("click", () => {
+            fetch("https://api.example.com/image-endpoint")
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.blob();
+                })
+                .then((blob) => {
+                    const imageUrl = URL.createObjectURL(blob);
+                    const imageElement = document.createElement("img");
+                    imageElement.src = imageUrl;
+
+                    const imageContainer = document.getElementById("imageContainer");
+                    imageContainer.innerHTML = "";
+                    imageContainer.appendChild(imageElement);
+
+                    URL.revokeObjectURL(imageUrl);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
 </body>
 </html>
