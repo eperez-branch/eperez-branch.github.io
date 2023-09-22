@@ -18,11 +18,11 @@ document.getElementById("fetchButton").addEventListener("click", function () {
                 finder_pattern_color: '#000000'
             },
             data: {
-                $fallback_url: 'http://musicapp.amazon.com',
-                $canonical_url: 'http://musicapp.amazon.com',
-                $marketing_title: '1 – Download the App AZ',
-                ~campaign: '1 – Download the App AZ',
-                ~tags: ['1', 'AZ']
+                "$fallback_url": "http://musicapp.amazon.com",
+                "$canonical_url": "http://musicapp.amazon.com",
+                "$marketing_title": "1 – Download the App AZ",
+                "~campaign": "1 – Download the App AZ",
+                "~tags": ["1", "AZ"]
             },
             branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
