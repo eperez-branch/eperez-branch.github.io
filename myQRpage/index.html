@@ -17,33 +17,18 @@
 </head>
 <body>
     <h1>API Image Viewer</h1>
-    <button id="fetchButton">Fetch Image</button>
+    
+    <!-- Add a form to accept user input -->
+    <form id="apiForm">
+        <label for="apiUrl">API URL:</label>
+        <input type="text" id="apiUrl" placeholder="Enter API URL">
+        <button type="submit">Fetch Image</button>
+    </form>
+    
     <div id="imageContainer"></div>
 
     <script>
-        document.getElementById("fetchButton").addEventListener("click", () => {
-            fetch("https://api.example.com/image-endpoint")
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.blob();
-                })
-                .then((blob) => {
-                    const imageUrl = URL.createObjectURL(blob);
-                    const imageElement = document.createElement("img");
-                    imageElement.src = imageUrl;
-
-                    const imageContainer = document.getElementById("imageContainer");
-                    imageContainer.innerHTML = "";
-                    imageContainer.appendChild(imageElement);
-
-                    URL.revokeObjectURL(imageUrl);
-                })
-                .catch((error) => {
-                    console.error("Error:", error);
-                });
-        });
+        // Add your JavaScript code here (as provided in the previous response)
     </script>
 </body>
 </html>
