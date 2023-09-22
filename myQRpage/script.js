@@ -45,15 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Create a URL for the blob response
                 const imageUrl = URL.createObjectURL(blob);
 
-                // Create an image element and set its source
-                const imageElement = document.createElement("img");
-                imageElement.src = imageUrl;
-
-                // Append the image to the specified container
-                const imageContainer = document.getElementById("imageContainer");
-                imageContainer.innerHTML = ""; // Clear previous content
-                imageContainer.appendChild(imageElement);
-
                 // Programmatically trigger a click event on an anchor to initiate download
                 const downloadLink = document.createElement("a");
                 downloadLink.href = imageUrl;
