@@ -41,27 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 return response.blob(); // Get the response as a blob
             })
-            .then((blob) => {
-                // Create a URL for the blob response
-                const imageUrl = URL.createObjectURL(blob);
-
-                // Create an image element and set its source
+            .then((encodedImageData) => {
+                // Create an image element and set its source to the decoded image data
                 const imageElement = document.createElement("img");
-                imageElement.src = imageUrl;
+                imageElement.src = `data:image/png;base64,${encodedImageData}`;
 
                 // Append the image to the specified container
                 const imageContainer = document.getElementById("imageContainer");
                 imageContainer.innerHTML = ""; // Clear previous content
                 imageContainer.appendChild(imageElement);
-
-                // Programmatically trigger a click event on an anchor to initiate download
-                const downloadLink = document.createElement("a");
-                downloadLink.href = imageUrl;
-                downloadLink.download = "1DownloadTheAppAZ.png";
-                downloadLink.click();
-
-                // Revoke the object URL to release resources
-                URL.revokeObjectURL(imageUrl);
             })
             .catch((error) => {
                 console.error("Error:", error);
