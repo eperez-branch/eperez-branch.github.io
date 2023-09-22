@@ -27,36 +27,37 @@ document.addEventListener("DOMContentLoaded", function () {
         const options = {
             method: 'POST',
             headers: {
-            accept: 'image/png', // Specify that you're expecting a PNG response
-            'content-type': 'application/json'
-        },
-        body: requestBody // Use the manually defined request body string
-    };
+                accept: 'image/png', // Specify that you're expecting a PNG response
+                'content-type': 'application/json'
+            },
+            body: requestBody // Use the manually defined request body string
+        };
 
-    fetch(apiUrl, options)
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        return response.blob();
-    })
-    .then((blob) => {
-            // Create a URL for the blob response
-        const imageUrl = URL.createObjectURL(blob);
+        fetch(apiUrl, options)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.blob();
+            })
+            .then((blob) => {
+                // Create a URL for the blob response
+                const imageUrl = URL.createObjectURL(blob);
 
-            // Create an image element and set its source
-        const imageElement = document.createElement("img");
-        imageElement.src = imageUrl;
+                // Create an image element and set its source
+                const imageElement = document.createElement("img");
+                imageElement.src = imageUrl;
 
-            // Append the image to the specified container
-        const imageContainer = document.getElementById("imageContainer");
-        imageContainer.innerHTML = "";
-        imageContainer.appendChild(imageElement);
+                // Append the image to the specified container
+                const imageContainer = document.getElementById("imageContainer");
+                imageContainer.innerHTML = "";
+                imageContainer.appendChild(imageElement);
 
-            // Revoke the object URL to release resources
-        URL.revokeObjectURL(imageUrl);
-    })
-    .catch((error) => {
-        console.error("Error:", error);
+                // Revoke the object URL to release resources
+                URL.revokeObjectURL(imageUrl);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     });
 });
