@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Image Viewer</title>
+    <title>API Image Viewer and Downloader</title>
     <style>
         /* Add your CSS styles here */
         #imageContainer {
@@ -14,15 +14,16 @@
             max-height: 400px;
         }
     </style>
-    <!-- Line to include the JavaScript file -->
+    <!-- Include the JavaScript file -->
     <script src="script.js"></script>
 </head>
 <body>
-    <h1>API Image Viewer</h1>
+    <h1>API Image Viewer and Downloader</h1>
+
+    <!-- Button to trigger the API request -->
+    <button id="fetchButton">Fetch and Download Image</button>
     
-    <!-- Add a button to trigger the API request -->
-    <button id="fetchButton">Fetch Image</button>
-    
+    <!-- Container to display the image -->
     <div id="imageContainer"></div>
 </body>
 </html>
