@@ -1,10 +1,4 @@
-// script.js
-document.getElementById("apiForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting and reloading the page
-
-    const apiUrlInput = document.getElementById("apiUrl");
-    const apiUrl = apiUrlInput.value;
-
+document.getElementById("fetchButton").addEventListener("click", function () {
     const options = {
         method: 'POST',
         headers: {
@@ -16,7 +10,7 @@ document.getElementById("apiForm").addEventListener("submit", function (event) {
                 code_pattern: 3,
                 finder_pattern: 1,
                 image_format: 'png',
-                center_logo_url: apiUrl, // Use the user-provided API URL
+                center_logo_url: 'https://cdn.branch.io/branch-assets//1153816943598261245/Letter_A-1695340831611.png',
                 width: 500,
                 margin: 1,
                 code_color: '#000000',
