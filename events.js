@@ -1,7 +1,5 @@
 function displayPhrase()
 {
-    // document.getElementById("demo").innerHTML = 'New Phrase';
-    // document.getElementById("demo").innerHTML = link || err;
     var linkData = {
         campaign: 'content 123',
         channel: 'facebook',
@@ -18,8 +16,17 @@ function displayPhrase()
         }
     }
     branch.link(linkData, function(err, link) {
-        document.getElementById("demo").innerHTML = link || err;
-    })
+        var linkElement = document.getElementById("dynamicLink");
+        var textElement = document.getElementById("demo");
+
+        if (link) {
+            linkElement.href = link; // Set the href attribute
+            textElement.textContent = link; // Update the text
+        } else {
+            textElement.textContent = err; // Display the error
+            linkElement.removeAttribute('href'); // Remove the href attribute
+        }
+    });
 };
 
 function customEvent() {
