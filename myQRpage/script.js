@@ -1,41 +1,36 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("fetchButton").addEventListener("click", function () {
-        const apiUrl = 'https://api2.branch.io/v2/qr-code';
+document.getElementById('generateQRButton').addEventListener('click', function() {
+    var qrCodeSettings = {
+        "code_color":"#000000",
+        "background_color": "#FFFFFF",
+        "margin": 5,
+        "width": 1000,
+        "image_format": "png"
+    };
+    var qrCodeLinkData = {
+        tags: [ 'Web SDK tag1', 'Web SDK tag2' ],
+        channel: 'myQRpage',
+        feature: 'Web SDK',
+        campaign: 'my Web SDK QR code test',
+        data: {
+            mydata: 'bar',
+            '$desktop_url': 'https://eperez-branch.github.io/',
+            '$ios_url': 'https://help.branch.io/using-branch/docs/creating-a-deep-link#redirections'            
+        }
+    };
+    
+    // Call API to generate the QR code
+    branch.qrCode(qrCodeLinkData, qrCodeSettings, function(err, qrCode) {
+        if (err) {
+            console.error('Error generating QR Code:', err);
+            return;
+        }
+        var img = document.createElement('img');
+        img.src = 'data:image/png;charset=utf-8;base64,' + qrCode.base64();
+        img.width = 500; // Set width for the QR code image
+        img.height = 500; // Set height for the QR code image
 
-        const requestBody = {
-        };
-
-        const options = {
-            method: 'POST',
-            headers: {
-                accept: 'image/png', // Specify that you're expecting a PNG response
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(requestBody) // Convert the request body to JSON string
-        };
-
-        fetch(apiUrl, options)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.blob(); // Get the response as a blob
-            })
-            .then((blob) => {
-                // Create a URL for the blob response
-                const imageUrl = URL.createObjectURL(blob);
-
-                // Programmatically trigger a click event on an anchor to initiate download
-                const downloadLink = document.createElement("a");
-                downloadLink.href = imageUrl;
-                downloadLink.download = "1DownloadTheAppAZ.png";
-                downloadLink.click();
-
-                // Revoke the object URL to release resources
-                URL.revokeObjectURL(imageUrl);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        var container = document.getElementById('qrCodeContainer');
+        container.innerHTML = ''; // Clear existing content
+        container.appendChild(img); // Add the new QR code image
     });
 });
