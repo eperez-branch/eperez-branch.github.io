@@ -16,15 +16,20 @@ function displayPhrase()
         }
     }
     branch.link(linkData, function(err, link) {
-        var linkElement = document.getElementById("dynamicLink");
-        var textElement = document.getElementById("demo");
+        var demoElement = document.getElementById("demo");
 
         if (link) {
+            // Create a new anchor element
+            var linkElement = document.createElement('a');
             linkElement.href = link; // Set the href attribute
-            textElement.textContent = link; // Update the text
+            linkElement.textContent = link; // Set the link text
+            linkElement.target = "_blank"; // Open in new tab
+
+            // Replace the existing span with this new anchor element
+            demoElement.replaceWith(linkElement);
         } else {
-            textElement.textContent = err; // Display the error
-            linkElement.removeAttribute('href'); // Remove the href attribute
+            // If there's an error, just display the error message
+            demoElement.textContent = err;
         }
     });
 };
