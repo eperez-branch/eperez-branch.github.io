@@ -32,5 +32,23 @@ document.getElementById('generateQRButton').addEventListener('click', function()
         var container = document.getElementById('qrCodeContainer');
         container.innerHTML = ''; // Clear existing content
         container.appendChild(img); // Add the new QR code image
+
+         // Show the download button
+        var downloadButton = document.getElementById('downloadQRButton');
+        downloadButton.style.display = 'block';
+
+        // Set the download attribute for the download button
+        downloadButton.addEventListener('click', function() {
+            downloadImage(img.src, 'qr-code.png');
+        });
     });
 });
+
+function downloadImage(dataUrl, filename) {
+    var a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
