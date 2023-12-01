@@ -5,44 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code API Generator</title>
     <script src="script.js" defer></script>
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block; /* Ensures the label takes up the full width */
+        }
+        .panel-title {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>QR Code API Generator</h1>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">
-                Analytics Information
-            </a>
-            </h3>
+            <h3 class="panel-title">Analytics Information</h3>
         </div>
-    <!-- Using Labels test -->
-    <label>Link Title:
-        <p>The title of the link.</p>
-        <input type="text" id="linkTitle" class="form-control" value=""/>
-    </label>
-    <label>Unique Identifying Tag:
-        <p>This is a unique identifier for reporting on a link that may be very similar or identical to others in a campaign, but needs to be reported on individually.</p>
-        <input type="text" id="variation" class="form-control" value=""/>
-    </label>
-
-    <!-- Input fields for API call -->
-    <label for="urlInput">URL:</label>
-    <input type="text" id="urlInput" placeholder="Enter URL">
-
-    <label for="titleInput">Title:</label>
-    <input type="text" id="titleInput" placeholder="Enter Title">
-
-    
-    <!-- Button to trigger the QR Code API generation -->
-    <button id="generateQRButton">Generate QR Code</button>
-
-    <!-- Container for the QR code image -->
-    <div id="qrCodeContainer">
-        <!-- The QR code image will be inserted here -->
+        <div class="form-group">
+            <label>Link Title:
+                <p>The title of the link.</p>
+                <input type="text" id="linkTitle" class="form-control" value=""/>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Unique Identifying Tag:
+                <p>This is a unique identifier for reporting on a link that may be very similar or identical to others in a campaign, but needs to be reported on individually.</p>
+                <input type="text" id="variation" class="form-control" value=""/>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="urlInput">URL:</label>
+            <input type="text" id="urlInput" class="form-control" placeholder="Enter URL">
+        </div>
+        <div class="form-group">
+            <label for="titleInput">Title:</label>
+            <input type="text" id="titleInput" class="form-control" placeholder="Enter Title">
+        </div>
+        <button id="generateQRButton" class="btn btn-primary">Generate QR Code</button>
+        <div id="qrCodeContainer"></div> <!-- QR code image container -->
+        <button id="downloadQRButton" class="btn btn-secondary" style="display: none;">Download QR Code</button>
     </div>
-    
-    <!-- Download Button -->
-    <button id="downloadQRButton" style="display: none;">Download QR Code</button>
-
 </body>
 </html>
