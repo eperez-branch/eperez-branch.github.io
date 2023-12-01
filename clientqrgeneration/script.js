@@ -16,10 +16,10 @@ document.getElementById('generateQRButton').addEventListener('click', function()
             finder_pattern_color: '#FF0000'
           },
           data: {
-            $canonical_url: 'https://eperez-branch.github.io/',
-            $fallback_url: 'https://eperez-branch.github.io/',
-            ~campaign: 'Website QR API Test',
-            ~channel: 'QR API'
+            '$canonical_url': 'https://eperez-branch.github.io/',
+            '$fallback_url': 'https://eperez-branch.github.io/',
+            '~campaign': 'Website QR API Test',
+            '~channel': 'QR API'
           },
           branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
