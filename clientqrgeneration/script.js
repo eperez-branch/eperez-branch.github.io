@@ -1,3 +1,4 @@
+// listen for click on QR button
 document.getElementById('generateQRButton').addEventListener('click', function() {
     const options = {
         method: 'POST',
@@ -24,14 +25,39 @@ document.getElementById('generateQRButton').addEventListener('click', function()
           branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
     };
-
+    
     fetch('https://api2.branch.io/v2/qr-code', options)
-        .then(response => response.blob()) // Assuming the response is an image blob
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
         .then(blob => {
             var img = document.createElement('img');
             img.src = URL.createObjectURL(blob);
             document.getElementById('qrCodeContainer').innerHTML = '';
             document.getElementById('qrCodeContainer').appendChild(img);
+
+            // Show the download button
+            document.getElementById('downloadQRButton').style.display = 'block';
         })
-        .catch(err => console.error('Error generating QR Code:', err));
+        .catch(err => console.error('Error:', err));
 });
+
+// listen for click on download button
+document.getElementById('downloadQRButton').addEventListener('click', function() {
+    var img = document.querySelector('#qrCodeContainer img');
+    if (img && img.src) {
+        downloadImage(img.src, 'qr-code.png');
+    }
+});
+
+function downloadImage(dataUrl, filename) {
+    var a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
