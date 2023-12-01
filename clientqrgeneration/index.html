@@ -24,24 +24,20 @@
             <h3 class="panel-title">Analytics Information</h3>
         </div>
         <div class="form-group">
-            <label>Link Title:
-                <p>The title of the link.</p>
-                <input type="text" id="linkTitle" class="form-control" value=""/>
-            </label>
+            <label for="feature">Feature:</label>
+            <input type="text" id="feature" class="form-control" placeholder="Enter ~feature">
         </div>
         <div class="form-group">
-            <label>Unique Identifying Tag:
-                <p>This is a unique identifier for reporting on a link that may be very similar or identical to others in a campaign, but needs to be reported on individually.</p>
-                <input type="text" id="variation" class="form-control" value=""/>
-            </label>
+            <label for="channel">Channel:</label>
+            <input type="text" id="channel" class="form-control" placeholder="Enter ~channel">
         </div>
         <div class="form-group">
-            <label for="urlInput">URL:</label>
-            <input type="text" id="urlInput" class="form-control" placeholder="Enter URL">
+            <label for="campaign">Campaign:</label>
+            <input type="text" id="campaign" class="form-control" placeholder="Enter ~campaign">
         </div>
         <div class="form-group">
-            <label for="titleInput">Title:</label>
-            <input type="text" id="titleInput" class="form-control" placeholder="Enter Title">
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" class="form-control" placeholder="Enter ~tags">
         </div>
         <button id="generateQRButton" class="btn btn-primary">Generate QR Code</button>
         <div id="qrCodeContainer"></div> <!-- QR code image container -->
