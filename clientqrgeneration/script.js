@@ -4,7 +4,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     var feature = document.getElementById('feature').value;
     var channel = document.getElementById('channel').value;
     var campaign = document.getElementById('campaign').value;
-    var tags = document.getElementById('tags').value.split(','); // Assuming tags are comma-separated
+    var tags = document.getElementById('tags').value.split(',').map(tag => tag.trim()); // Assuming tags are comma-separated, splits and trims each tag
     var ios_url = document.getElementById('ios_url').value;
     var android_url = document.getElementById('android_url').value;
     var desktop_url = document.getElementById('desktop_url').value;
