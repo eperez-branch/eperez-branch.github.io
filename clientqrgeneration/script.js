@@ -40,18 +40,6 @@ document.getElementById('generateQRButton').addEventListener('click', function()
         method: 'POST',
         headers: {accept: 'image/*', 'content-type': 'application/json'},
         body: JSON.stringify({
-            // QR code data
-            qr_code_settings: {
-                code_pattern: 2,
-                finder_pattern: 1,
-                image_format: 'png',
-                center_logo_url: 'https://cdn.branch.io/branch-assets//1153816943598261245/Listen_Now_2-1697049424813.png',
-                width: 500,
-                margin: 1,
-                code_color: '#0030FF',
-                background_color: '#FFFFFF',
-                finder_pattern_color: '#FF0000'
-            },
             data: data,
             branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
