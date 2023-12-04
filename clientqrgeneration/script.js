@@ -62,7 +62,7 @@ function downloadImage(dataUrl, filename) {
     document.body.removeChild(a);
 }
 
-document.getElementById('linkData').addEventListener('click', function() {
+document.getElementById('addLinkData').addEventListener('click', function() {
     var container = document.getElementById('linkData');
     var newPair = document.createElement('div');
     newPair.classList.add('form-group');
