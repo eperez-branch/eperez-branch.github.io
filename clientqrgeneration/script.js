@@ -1,23 +1,38 @@
 // listen for click on QR button
 document.getElementById('generateQRButton').addEventListener('click', function() {
-    // Gather inputs from form fields
-    var feature = document.getElementById('feature').value;
-    var channel = document.getElementById('channel').value;
-    var campaign = document.getElementById('campaign').value;
-    var tags = document.getElementById('tags').value.split(',').map(tag => tag.trim()); // Assuming tags are comma-separated, splits and trims each tag
-    var ios_url = document.getElementById('ios_url').value;
-    var android_url = document.getElementById('android_url').value;
-    var desktop_url = document.getElementById('desktop_url').value;
-    var web_only = document.getElementById('web_only').checked; // Boolean
+    // Initialize an empty data object
+    var data = {};
 
-    // Construct dynamic key-value pairs
+    // Function to add non-empty values to the data object
+    function addDataIfNotEmpty(key, value) {
+        if (value.trim() !== '') {
+            data[key] = value.trim();
+        }
+    }
+
+    // Handle predefined fields
+    addDataIfNotEmpty('~feature', document.getElementById('feature').value);
+    addDataIfNotEmpty('~channel', document.getElementById('channel').value);
+    addDataIfNotEmpty('~campaign', document.getElementById('campaign').value);
+    addDataIfNotEmpty('$ios_url', document.getElementById('ios_url').value);
+    addDataIfNotEmpty('$android_url', document.getElementById('android_url').value);
+    addDataIfNotEmpty('$desktop_url', document.getElementById('desktop_url').value);
+    // For checkbox
+    data['$web_only'] = document.getElementById('web_only').checked;
+
+    // Handle tags (split and trim each tag)
+    var tags = document.getElementById('tags').value.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
+    if (tags.length > 0) {
+        data['~tags'] = tags;
+    }
+
+    // Handle dynamic key-value pairs
     var linkDataPairs = document.querySelectorAll('#linkData .form-group');
-    var additionalData = {};
     linkDataPairs.forEach(pair => {
-        var key = pair.querySelector('.key-input').value;
-        var value = pair.querySelector('.value-input').value;
-        if (key && value) { // Ensure both key and value are provided
-            additionalData[key] = value;
+        var key = pair.querySelector('.key-input').value.trim();
+        var value = pair.querySelector('.value-input').value.trim();
+        if (key !== '' && value !== '') {
+            data[key] = value;
         }
     });
     
@@ -37,17 +52,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
                 background_color: '#FFFFFF',
                 finder_pattern_color: '#FF0000'
             },
-            data: {
-                '~feature': feature,
-                '~channel': channel,
-                '~campaign': campaign,
-                '~tags': tags,
-                '$ios_url': ios_url,
-                '$android_url': android_url,
-                '$desktop_url': desktop_url,
-                '$web_only': web_only,
-                ...additionalData // Spread operator to add additional key-value pairs
-            },
+            data: data,
             branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
     };
