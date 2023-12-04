@@ -30,7 +30,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
                 '~feature': feature,
                 '~channel': channel,
                 '~campaign': campaign,
-                '~tags':[tags],
+                '~tags': tags,
                 '$ios_url': ios_url,
                 '$android_url': android_url,
                 '$desktop_url': desktop_url,
