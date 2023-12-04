@@ -9,6 +9,17 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     var android_url = document.getElementById('android_url').value;
     var desktop_url = document.getElementById('desktop_url').value;
     var web_only = document.getElementById('web_only').checked; // Boolean
+
+    // Construct dynamic key-value pairs
+    var linkDataPairs = document.querySelectorAll('#linkData .form-group');
+    var additionalData = {};
+    linkDataPairs.forEach(pair => {
+        var key = pair.querySelector('.key-input').value;
+        var value = pair.querySelector('.value-input').value;
+        if (key && value) { // Ensure both key and value are provided
+            additionalData[key] = value;
+        }
+    });
     
     const options = {
         method: 'POST',
@@ -34,7 +45,8 @@ document.getElementById('generateQRButton').addEventListener('click', function()
                 '$ios_url': ios_url,
                 '$android_url': android_url,
                 '$desktop_url': desktop_url,
-                '$web_only': web_only
+                '$web_only': web_only,
+                ...additionalData // Spread operator to add additional key-value pairs
             },
             branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
         })
