@@ -58,6 +58,19 @@
             <label for="web_only">Web Only?:</label>
             <input type="text" id="web_only" class="form-control" placeholder="Enter ~web_only">
         </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">Link Data</h3>
+        </div>
+        <div id="linkData">
+            <div class="form-group">
+                <label>Key:</label>
+                <input type="text" class="form-control key-input" placeholder="Enter key">
+                <label>Value:</label>
+                <input type="text" class="form-control value-input" placeholder="Enter value">
+            </div>
+        </div>
+        <button id="linkData" class="btn btn-secondary">Add Another Key-Value Pair</button>
+
         <button id="generateQRButton" class="btn btn-primary">Generate QR Code</button>
         <div id="qrCodeContainer"></div> <!-- QR code image container -->
         <button id="downloadQRButton" class="btn btn-secondary" style="display: none;">Download QR Code</button>
