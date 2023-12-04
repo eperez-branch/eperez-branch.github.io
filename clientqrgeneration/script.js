@@ -61,3 +61,16 @@ function downloadImage(dataUrl, filename) {
     a.click();
     document.body.removeChild(a);
 }
+
+document.getElementById('linkData').addEventListener('click', function() {
+    var container = document.getElementById('linkData');
+    var newPair = document.createElement('div');
+    newPair.classList.add('form-group');
+    newPair.innerHTML = `
+        <label>Key:</label>
+        <input type="text" class="form-control key-input" placeholder="Enter key">
+        <label>Value:</label>
+        <input type="text" class="form-control value-input" placeholder="Enter value">
+    `;
+    container.appendChild(newPair);
+});
