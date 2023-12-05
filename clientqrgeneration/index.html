@@ -75,6 +75,14 @@
         .btn-secondary:hover {
             background: #545b62;
         }
+        
+        .field-description {
+            font-size: 0.9em; /* Smaller font size */
+            color: #666; /* Lighter text color */
+            margin-top: -10px; /* Adjust spacing */
+            margin-bottom: 10px;
+            font-style: italic; /* Italicize the text */
+        }
 
         @media (max-width: 768px) {
             .form-group {
@@ -91,37 +99,45 @@
         </div>
         <div class="form-group">
             <label for="feature">Feature:</label>
+            <p class="field-description">Feature should describe where this QR code is placed.</p>
             <input type="text" id="feature" class="form-control" placeholder="Enter ~feature">
         </div>
         <div class="form-group">
             <label for="channel">Channel:</label>
+            <p class="field-description">Channel should describe the platform or source from which you are expecting users to scan this QR code.</p>
             <input type="text" id="channel" class="form-control" placeholder="Enter ~channel">
         </div>
         <div class="form-group">
             <label for="campaign">Campaign:</label>
+            <p class="field-description">Campaign varies from company to company, but it should describe the theme of the QR code.</p>
             <input type="text" id="campaign" class="form-control" placeholder="Enter ~campaign">
         </div>
         <div class="form-group">
             <label for="tags">Tags:</label>
-            <input type="text" id="tags" class="form-control" placeholder="Enter ~tags">
+            <p class="field-description">Tags are a free-form list of labels that can be used as filters.</p>
+            <input type="text" id="tags" class="form-control" placeholder="Enter ~tags. Separate values using a comma.">
         </div>
         <div class="panel-heading">
             <h3 class="panel-title">Redirects</h3>
         </div>
         <div class="form-group">
-            <label for="ios_url">iOS:</label>
-            <input type="text" id="ios_url" class="form-control" placeholder="Enter $ios_url">
+            <label for="ios_url">iOS URL:</label>
+            <p class="field-description">Change the redirect for iOS. Default is the App Store page for your app.</p>
+            <input type="text" id="ios_url" class="form-control" placeholder="Leave blank to redirect to the App Store.">
         </div>
         <div class="form-group">
-            <label for="android_url">Android:</label>
-            <input type="text" id="android_url" class="form-control" placeholder="Enter $android_url">
+            <label for="android_url">Android URL:</label>
+            <p class="field-description">Change the redirect for Android. Default is the Google Play Store page for your app.</p>
+            <input type="text" id="android_url" class="form-control" placeholder="Leave blank to redirect to the Google Play Store.">
         </div>
         <div class="form-group">
             <label for="web_only">Web Only?</label>
+            <p class="field-description">Always redirect to web, even if the app is installed.</p>
             <input type="checkbox" id="web_only" name="web_only">
         </div>
         <div class="panel-heading">
             <h3 class="panel-title">Link Data</h3>
+            <p class="field-description">Add the data that you want to be passed to your app via this QR code. This data is also used to configure functions like deep link routing.</p>
         </div>
         <div id="linkData">
             <div class="form-group">
