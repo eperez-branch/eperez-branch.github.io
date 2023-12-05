@@ -57,6 +57,13 @@ document.getElementById('generateQRButton').addEventListener('click', function()
             document.getElementById('qrCodeContainer').innerHTML = '';
             document.getElementById('qrCodeContainer').appendChild(img);
 
+            // After the QR code is generated...
+            var qrCodeContainer = document.getElementById('qrCodeContainer');
+            var generateButton = document.getElementById('generateQRButton');
+            
+            // Move the 'Generate QR Code' button after the QR code container
+            qrCodeContainer.parentNode.insertBefore(generateButton, qrCodeContainer.nextSibling);
+
             // Show the download button
             document.getElementById('downloadQRButton').style.display = 'block';
         })
