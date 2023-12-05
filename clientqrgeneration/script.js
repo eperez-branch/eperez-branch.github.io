@@ -1,5 +1,8 @@
 // listen for click on QR button
 document.getElementById('generateQRButton').addEventListener('click', function() {
+    // get Branch Key
+    var branch_key = document.getElementById('branch_key').value;
+    
     // Initialize an empty data object
     var data = {};
 
@@ -17,7 +20,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     addDataIfNotEmpty('$ios_url', document.getElementById('ios_url').value);
     addDataIfNotEmpty('$android_url', document.getElementById('android_url').value);
     // For checkbox
-    data['$web_only'] = document.getElementById('web_only').checked;
+    data['$web_only'] = document.getElementById('web_only').checked; // Boolean
 
     // Handle tags (split and trim each tag)
     var tags = document.getElementById('tags').value.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
@@ -40,7 +43,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
         headers: {accept: 'image/*', 'content-type': 'application/json'},
         body: JSON.stringify({
             data: data,
-            branch_key: 'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq'
+            branch_key: branch_key
         })
     };
     
