@@ -39,13 +39,15 @@
         }
 
         input[type="text"],
-        input[type="checkbox"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
+
+        .checkbox-container {
+            margin-left: 0; /* Adjust as needed to align the container */
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            transform: scale(1.5); /* Scale up the checkbox */
+            margin-right: 10px; /* Space between checkbox and label */
+            vertical-align: middle; /* Adjust vertical alignment if necessary */
         }
 
         .btn {
@@ -115,8 +117,10 @@
             <input type="text" id="desktop_url" class="form-control" placeholder="Enter $desktop_url">
         </div>
         <div class="form-group">
-            <label for="web_only">Web Only?</label>
-            <input type="checkbox" id="web_only" name="web_only">
+            <div class="checkbox-container">
+                <input type="checkbox" id="web_only" name="web_only">
+                <label for="web_only">Web Only?</label>
+            </div>
         </div>
         <div class="panel-heading">
             <h3 class="panel-title">Link Data</h3>
