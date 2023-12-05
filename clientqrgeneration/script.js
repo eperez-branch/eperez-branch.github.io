@@ -16,7 +16,6 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     addDataIfNotEmpty('~campaign', document.getElementById('campaign').value);
     addDataIfNotEmpty('$ios_url', document.getElementById('ios_url').value);
     addDataIfNotEmpty('$android_url', document.getElementById('android_url').value);
-    addDataIfNotEmpty('$desktop_url', document.getElementById('desktop_url').value);
     // For checkbox
     data['$web_only'] = document.getElementById('web_only').checked;
 
