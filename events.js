@@ -170,3 +170,34 @@ function doLogout() {
         console.log(err, data);
     });
 }
+
+// Function to extract query parameters
+function getQueryParams() {
+    var params = {};
+    var parser = document.createElement('a');
+    parser.href = window.location.href;
+    var query = parser.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return params;
+}
+
+// Function to build query string from parameters
+function buildQueryString(params) {
+    return Object.keys(params)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+        .join('&');
+}
+
+// Append query parameters to the button's URL
+window.onload = function() {
+    var queryParams = getQueryParams();
+    var queryString = buildQueryString(queryParams);
+    var button = document.getElementById('longLinkButton');
+    button.onclick = function() {
+        location.href = 'https://eduardo.app.link/' + (queryString ? '?' + queryString : '');
+    };
+};
