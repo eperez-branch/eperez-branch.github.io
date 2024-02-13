@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Making the function accessible globally
   window.displayModalContent = function() {
     // Use a URL that returns HTML content
-    fetch('URL_TO_HTML_CONTENT')
+    fetch('https://eperez-branch.github.io/clientqrgeneration/')
       .then(response => response.text())
       .then(html => {
         document.getElementById('modalBody').innerHTML = html;
