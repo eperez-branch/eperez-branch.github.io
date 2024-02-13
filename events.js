@@ -201,3 +201,40 @@ window.onload = function() {
         location.href = 'https://eduardo.app.link/' + (queryString ? '?' + queryString : '');
     };
 };
+
+//script to open a modal window on the page
+// Assuming you have an existing <script> tag or an external JavaScript file
+document.addEventListener('DOMContentLoaded', function () {
+  // Modal interactions
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName('close')[0];
+
+  // Function to open modal and load content
+  function displayModalContent() {
+    fetch('https://lightroom.app.link/p607pY0l2Ab') // Specify the URL of the content to load dynamically
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('modalBody').innerHTML = html;
+        modal.style.display = "block";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      })
+      .catch(error => console.error('Error loading the content:', error));
+  }
+
+  // Call this function when you need to display the modal, e.g., on a button click
+  // Example: document.getElementById('yourButtonId').onclick = displayModalContent;
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+    document.body.style.backgroundColor = ""; // Remove background opaqueness
+  }
+
+  // Close modal if clicked outside of it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      document.body.style.backgroundColor = "";
+    }
+  }
+});
