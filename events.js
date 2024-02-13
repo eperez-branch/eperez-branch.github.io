@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Making the function accessible globally
   window.displayModalContent = function() {
     // Use a URL that returns HTML content
-    fetch('https://eperez-branch.github.io/clientqrgeneration/')
+    fetch('https://lightroom.app.link/p607pY0l2Ab')
       .then(response => response.text())
       .then(html => {
         document.getElementById('modalBody').innerHTML = html;
