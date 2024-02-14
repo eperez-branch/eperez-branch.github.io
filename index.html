@@ -43,6 +43,36 @@
          box-shadow: 0 5px #666;
          transform: translateY(-2px);
       }
+      .modal {
+         display: none; /* Hidden by default */
+         position: fixed; /* Stay in place */
+         z-index: 1; /* Sit on top */
+         left: 0;
+         top: 0;
+         width: 100%; /* Full width */
+         height: 100%; /* Full height */
+         overflow: auto; /* Enable scroll if needed */
+         background-color: rgba(0,0,0,0.4); /* Dimmed background */
+      }
+      .modal-content {
+         background-color: #fefefe;
+         margin: 10% auto; /* Adjust as necessary */
+         padding: 20px;
+         border: 1px solid #888;
+         width: 50%; /* Adjust as necessary */
+      }
+      .close {
+         color: #aaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+         color: black;
+         text-decoration: none;
+         cursor: pointer;
+      }
   </style>
 </head>
 <body>
@@ -78,17 +108,20 @@
          <button onclick="location.href='https://lightroom.app.link/p607pY0l2Ab'" type="button">
             Branch Link to Desktop App (Current Tab)
          </button>
+         <!-- Trigger Button -->
          <button id="launchBtn">Launch Now
-         </button>
-         <button onclick="displayModalContent()">Display Modal
          </button>
       </div>
    </main>
-   <!-- Modal Structure -->
+   <!-- Modal -->
    <div id="myModal" class="modal">
       <div class="modal-content">
          <span class="close">&times;</span>
-         <div id="modalBody"> <!-- Container for dynamically loaded content --></div>
+         <h2>HP Support Solutions software requirement</h2>
+         <p>If you don't see the dialog box prompts, it probably means you need to install our software. Let's get you started!</p>
+         <p>Click below to start installing HP Support Solutions</p>
+         <button id="startDownload">Start Download</button>
+         <!-- Include other modal content here -->
       </div>
    </div>
 </body>
