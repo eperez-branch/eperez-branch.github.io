@@ -211,11 +211,29 @@ var btn = document.getElementById("launchBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
+// When the user clicks the button, open the modal and load content from a URL
 btn.onclick = function() {
-  modal.style.display = "block";
-  document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
+  fetch('https://eperez-branch.github.io/clientqrgeneration/') // Replace with the URL you want to load
+    .then(response => {
+      // Check if the request was successful
+      if (response.ok) {
+        return response.text(); // Or `.json()` if the URL returns JSON data
+      }
+      throw new Error('Network response was not ok.');
+    })
+    .then(html => {
+      document.getElementById('modalBody').innerHTML = html; // Insert the content into the modal body
+      modal.style.display = "block";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+      document.getElementById('modalBody').innerHTML = '<p>Error loading content. Please try again later.</p>'; // Provide an error message in the modal
+      modal.style.display = "block";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
+    });
 }
+
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
