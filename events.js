@@ -216,7 +216,7 @@ var modalIframe = document.getElementById("modalIframe");
 
 // When the user clicks the button, open the modal and set the iframe source
 btn.onclick = function() {
-  modalIframe.src = 'https://eduardo.app.link/DEX9UdwicHb'; // Replace with the URL you want to display
+  modalIframe.src = 'https://eduardo.app.link/e/DEX9UdwicHb'; // Replace with the URL you want to display
   modal.style.display = "block";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
 }
