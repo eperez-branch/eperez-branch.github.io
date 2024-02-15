@@ -222,13 +222,13 @@ btn.onclick = function() {
       throw new Error('Network response was not ok.');
     })
     .then(html => {
-      document.getElementById('modalBody').innerHTML = html; // Insert the content into the modal body
+      document.getElementById('myModal').innerHTML = html; // Insert the content into the modal body
       modal.style.display = "block";
       document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
     })
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
-      document.getElementById('modalBody').innerHTML = '<p>Error loading content. Please try again later.</p>'; // Provide an error message in the modal
+      document.getElementById('myModal').innerHTML = '<p>Error loading content. Please try again later.</p>'; // Provide an error message in the modal
       modal.style.display = "block";
       document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
     });
