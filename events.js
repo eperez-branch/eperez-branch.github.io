@@ -213,7 +213,7 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal and load content from a URL
 btn.onclick = function() {
-  fetch('https://lightroom.app.link/p607pY0l2Ab') // Replace with the URL you want to load
+  fetch('https://eduardo.app.link/DEX9UdwicHb') // Replace with the URL you want to load
     .then(response => {
       // Check if the request was successful
       if (response.ok) {
