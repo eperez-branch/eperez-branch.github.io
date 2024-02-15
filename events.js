@@ -211,22 +211,28 @@ var btn = document.getElementById("launchBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
+// Get the iframe within the modal
+var modalIframe = document.getElementById("modalIframe");
+
+// When the user clicks the button, open the modal and set the iframe source
 btn.onclick = function() {
+  modalIframe.src = 'https://eperez-branch.github.io/mysecondpage/'; // Replace with the URL you want to display
   modal.style.display = "block";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), close the modal and clear the iframe source
 span.onclick = function() {
   modal.style.display = "none";
+  modalIframe.src = ''; // Clear the iframe source
   document.body.style.backgroundColor = ""; // Undim background
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the modal, close it and clear the iframe source
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    modalIframe.src = ''; // Clear the iframe source
     document.body.style.backgroundColor = ""; // Undim background
   }
 }
