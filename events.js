@@ -213,7 +213,7 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal and load content from a URL
 btn.onclick = function() {
-  fetch('https://eperez-branch.github.io/clientqrgeneration/') // Replace with the URL you want to load
+  fetch('https://support.hp.com/us-en/help/computer/battery-adapter-issues') // Replace with the URL you want to load
     .then(response => {
       // Check if the request was successful
       if (response.ok) {
