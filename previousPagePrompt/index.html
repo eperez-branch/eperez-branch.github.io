@@ -36,9 +36,15 @@
         <h2>HP Support Solutions</h2>
         <p>Check is complete!</p>
         <p>Click below to close this tab and return to diagnostics page.</p>
-        <button onclick="location.href='https://eduardo.app.link/2825iNRRdHb'" type="button">
-            Close This Tab (test)
+        <!-- This should be part of the content at the URL opened in the new tab -->
+        <button id="closeTabButton">
+            Close This Tab
         </button>
+        <script>
+            document.getElementById('closeTabButton').addEventListener('click', function() {
+                window.close();
+            });
+        </script>
     </div>
 </body>
 </html>
