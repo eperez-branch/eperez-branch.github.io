@@ -17,23 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Attempt to generate the Branch link
+  // Generate the Branch link
   branch.link(linkData, function(err, link) {
     if (link) {
-      // If the link successfully generated, store in data-link attribute
-      var myButton = document.getElementById("myButton");
-      myButton.setAttribute("data-link", link);
-      // Add click event listener once
-      if (!myButton.classList.contains('link-set')) {
-        myButton.addEventListener("click", function() {
-          var url = this.getAttribute("data-link");
-          window.open(url, '_blank');
-        });
-        myButton.classList.add('link-set'); // Mark button as listener attached
-      }
+      // Set the link for the button that opens in the current tab
+      var buttonCurrentTab = document.getElementById("openLinkCurrentTab");
+      buttonCurrentTab.onclick = function() {
+        window.location.href = link;
+      };
+
+      // Set the link for the button that opens in a new tab
+      var buttonNewTab = document.getElementById("openLinkNewTab");
+      buttonNewTab.onclick = function() {
+        window.open(link, '_blank');
+      };
     } else {
       console.error("Error creating link: " + err);
-      // handle the error with user visibility (consider alert or message)
+      // Handle the error (consider displaying error to user)
     }
   });
 });
