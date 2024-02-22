@@ -1,4 +1,6 @@
-function createBranchLink() {
+// Script should run after the page is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Define link data
   var linkData = {
     campaign: 'HP Web SDK Test',
     channel: 'Web SDK Test',
@@ -14,18 +16,24 @@ function createBranchLink() {
       '$deeplink_path': 'learn/discover/56f15e48-f573-4821-b3da-4ffc8227de39'
     }
   }
+
+  // Attempt to generate the Branch link
   branch.link(linkData, function(err, link) {
     if (link) {
-      // Store the link in a button's data attribute and add an event listener to the button
-      var myButton = document.getElementById("myButton"); // Ensure you have this button in your HTML
-      myButton.setAttribute("data-link", link); // Store the link
-      myButton.addEventListener("click", function() {
-        var url = this.getAttribute("data-link");
-        window.open(url, '_blank'); // Or window.location.href = url; to open in the same tab
-      });
+      // If the link successfully generated, store in data-link attribute
+      var myButton = document.getElementById("myButton");
+      myButton.setAttribute("data-link", link);
+      // Add click event listener once
+      if (!myButton.classList.contains('link-set')) {
+        myButton.addEventListener("click", function() {
+          var url = this.getAttribute("data-link");
+          window.open(url, '_blank');
+        });
+        myButton.classList.add('link-set'); // Mark button as listener attached
+      }
     } else {
-      // Handle error, e.g., with an alert or inserting a message into the page
-      alert("Error creating link: " + err);
+      console.error("Error creating link: " + err);
+      // handle the error with user visibility (consider alert or message)
     }
   });
-};
+});
