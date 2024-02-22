@@ -202,11 +202,15 @@ window.onload = function() {
     };
 };
 
+// code for modal/iframe and associated buttons
 // Get the modal
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
+// Get the first button that opens the modal
 var btn = document.getElementById("launchBtn");
+
+// Get the second button that opens the modal with a different URL
+var btnWebSDK = document.getElementById("launchBtnWebSDK");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -214,9 +218,16 @@ var span = document.getElementsByClassName("close")[0];
 // Get the iframe within the modal
 var modalIframe = document.getElementById("modalIframe");
 
-// When the user clicks the button, open the modal and set the iframe source
+// When the user clicks the first button, open the modal and set the iframe source to the first URL
 btn.onclick = function() {
-  modalIframe.src = 'https://eperez-branch.github.io/testingHP/'; // Replace with the URL you want to display
+  modalIframe.src = 'https://eperez-branch.github.io/testingHP/'; // The URL for the first button
+  modal.style.display = "block";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
+}
+
+// When the user clicks the second button, open the modal and set the iframe source to the second URL
+btnWebSDK.onclick = function() {
+  modalIframe.src = 'https://eperez-branch.github.io/websdkTesting/'; // The URL for the second button
   modal.style.display = "block";
   document.body.style.backgroundColor = "rgba(0,0,0,0.4)"; // Dim background
 }
