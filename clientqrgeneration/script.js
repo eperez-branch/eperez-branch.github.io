@@ -60,7 +60,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
         method: 'POST',
         headers: {accept: 'image/*', 'content-type': 'application/json'},
         body: JSON.stringify({
-            qrCodeSettings: qrCodeSettings,
+            qr_code_settings: qrCodeSettings,
             data: data,
             branch_key: branch_key
         })
