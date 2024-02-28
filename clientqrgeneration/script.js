@@ -19,6 +19,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     // Add settings only if they are not empty
     addSettingIfNotEmpty('code_color', document.getElementById('code_color').value);
     addSettingIfNotEmpty('background_color', document.getElementById('background_color').value);
+    addSettingIfNotEmpty('finder_pattern_color', document.getElementById('finder_pattern_color').value);
     addSettingIfNotEmpty('width', document.getElementById('width').value);
     addSettingIfNotEmpty('center_logo_url', document.getElementById('center_logo_url').value);
     addSettingIfNotEmpty('code_pattern', document.getElementById('code_pattern').value, true); // Parse as integer
