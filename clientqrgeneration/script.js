@@ -6,6 +6,23 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     // Initialize an empty data object
     var data = {};
 
+    // Initialize an empty QR Code Settings object
+    var qrCodeSettings = {};
+
+    // Function to add non-empty values to the QR Code Settings object
+    function addSettingIfNotEmpty(settingKey, settingValue) {
+        if (settingValue.trim() !== '') {
+            qrCodeSettings[settingKey] = settingValue.trim();
+        }
+    }
+
+    addSettingIfNotEmpty('code_color', document.getElementById('code_color').value);
+    addSettingIfNotEmpty('background_color', document.getElementById('background_color').value);
+    addSettingIfNotEmpty('width', document.getElementById('width').value);
+    addSettingIfNotEmpty('center_logo_url', document.getElementById('center_logo_url').value);
+    addSettingIfNotEmpty('code_pattern', document.getElementById('code_pattern').value);
+    addSettingIfNotEmpty('finder_pattern', document.getElementById('finder_pattern').value);
+
     // Function to add non-empty values to the data object
     function addDataIfNotEmpty(key, value) {
         if (value.trim() !== '') {
@@ -42,6 +59,7 @@ document.getElementById('generateQRButton').addEventListener('click', function()
         method: 'POST',
         headers: {accept: 'image/*', 'content-type': 'application/json'},
         body: JSON.stringify({
+            qrCodeSettings: qrCodeSettings,
             data: data,
             branch_key: branch_key
         })
