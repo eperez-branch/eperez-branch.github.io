@@ -10,18 +10,19 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     var qrCodeSettings = {};
 
     // Function to add non-empty values to the QR Code Settings object
-    function addSettingIfNotEmpty(settingKey, settingValue) {
+    function addSettingIfNotEmpty(settingKey, settingValue, isInt = false) {
         if (settingValue.trim() !== '') {
-            qrCodeSettings[settingKey] = settingValue.trim();
+            qrCodeSettings[settingKey] = isInt ? parseInt(settingValue.trim(), 10) : settingValue.trim();
         }
     }
 
+    // Add settings only if they are not empty
     addSettingIfNotEmpty('code_color', document.getElementById('code_color').value);
     addSettingIfNotEmpty('background_color', document.getElementById('background_color').value);
     addSettingIfNotEmpty('width', document.getElementById('width').value);
     addSettingIfNotEmpty('center_logo_url', document.getElementById('center_logo_url').value);
-    addSettingIfNotEmpty('code_pattern', document.getElementById('code_pattern').value);
-    addSettingIfNotEmpty('finder_pattern', document.getElementById('finder_pattern').value);
+    addSettingIfNotEmpty('code_pattern', document.getElementById('code_pattern').value, true); // Parse as integer
+    addSettingIfNotEmpty('finder_pattern', document.getElementById('finder_pattern').value, true); // Parse as integer
 
     // Function to add non-empty values to the data object
     function addDataIfNotEmpty(key, value) {
