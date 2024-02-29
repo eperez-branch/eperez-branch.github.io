@@ -20,8 +20,8 @@ document.getElementById('generateQRButton').addEventListener('click', function()
     addSettingIfNotEmpty('code_color', document.getElementById('code_color').value);
     addSettingIfNotEmpty('background_color', document.getElementById('background_color').value);
     addSettingIfNotEmpty('finder_pattern_color', document.getElementById('finder_pattern_color').value);
-    addSettingIfNotEmpty('margin', document.getElementById('margin').value);
-    addSettingIfNotEmpty('width', document.getElementById('width').value);
+    addSettingIfNotEmpty('margin', document.getElementById('margin').value, true); // Parse as integer
+    addSettingIfNotEmpty('width', document.getElementById('width').value, true); // Parse as integer
     addSettingIfNotEmpty('center_logo_url', document.getElementById('center_logo_url').value);
     addSettingIfNotEmpty('code_pattern', document.getElementById('code_pattern').value, true); // Parse as integer
     addSettingIfNotEmpty('finder_pattern', document.getElementById('finder_pattern').value, true); // Parse as integer
