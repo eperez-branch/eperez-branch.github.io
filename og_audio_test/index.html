@@ -1,1 +1,26 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Audio Page</title>
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Sample Audio Track" />
+    <meta property="og:type" content="music.song" />
+    <meta property="og:url" content="http://www.example.com/sample-audio" />
+    <meta property="og:image" content="http://www.example.com/image.jpg" />
+    <meta property="og:description" content="A sample audio track on our website." />
+    <!-- Additional tags for audio -->
+    <meta property="og:audio" content="http://www.example.com/audio.mp3" />
+    <meta property="og:audio:secure_url" content="https://www.example.com/audio.mp3" />
+    <meta property="og:audio:type" content="audio/mpeg" />
+</head>
+<body>
+    <h1>My Sample Audio Page</h1>
+    <p>Check out the new audio track!</p>
+    <audio controls>
+        <source src="http://www.example.com/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
