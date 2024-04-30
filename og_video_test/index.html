@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Video Title - Video by Creator | YourSiteName</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://example.com/favicon.ico">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="video.movie">
+    <meta property="og:title" content="Sample Video Title - Video by Creator">
+    <meta property="og:description" content="Watch Sample Video Title by Creator on YourSiteName.">
+    <meta property="og:image" content="https://example.com/path/to/thumbnail.jpg">
+    <meta property="og:url" content="https://example.com/path/to/video">
+    <meta property="og:site_name" content="YourSiteName">
+    <meta property="og:video" content="https://example.com/path/to/video.mp4">
+    <meta property="og:video:type" content="video/mp4">
+    <meta property="og:video:width" content="1280">
+    <meta property="og:video:height" content="720">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="player">
+    <meta name="twitter:title" content="Sample Video Title - Video by Creator">
+    <meta name="twitter:description" content="Watch Sample Video Title by Creator on YourSiteName.">
+    <meta name="twitter:image" content="https://example.com/path/to/thumbnail.jpg">
+    <meta name="twitter:image:alt" content="Description of Image">
+    <meta name="twitter:player" content="https://example.com/path/to/video">
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:player:stream" content="https://example.com/path/to/video.mp4">
+    <meta name="twitter:player:stream:content_type" content="video/mp4">
+
+    <!-- Additional tags for mobile linking and app interactions -->
+    <meta property="al:ios:url" content="yourapp://video/123">
+    <meta property="al:ios:app_store_id" content="123456789">
+    <meta property="al:ios:app_name" content="YourAppName">
+    <meta property="al:android:url" content="yourapp://video/123">
+    <meta property="al:android:app_name" content="YourAppName">
+    <meta property="al:android:package" content="com.example.yourapp">
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://example.com/path/to/video.mp4" as="video">
+</head>
+<body>
+    <h1>Sample Video Title</h1>
+    <p>Creator: Your Creator Name</p>
+    <video controls width="1280" height="720">
+        <source src="https://example.com/path/to/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
