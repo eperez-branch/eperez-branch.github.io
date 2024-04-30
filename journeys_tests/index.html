@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Branch meta data -->
-   <!-- Load My Script -->
-   <script src="script.js"></script>
-   <!-- Load Branch Web SDK -->
-   <script>
-      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking qrCode".split(" "), 0);
-      branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq');
-      // Optional additional deep link data
-      var linkData = {
-         data: {
-            'ECID': '123abcECID',
-            'custom_int': Date.now(),
-            'custom_string': 'hello'
-         }
-      };
-      branch.setBranchViewData(linkData);
-   </script>
-   <!-- End Load Branch Web SDK -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>My Test Website</title>
-   <meta charset="UTF-8">
-   <style>
-      body {
-         font-family: Arial, Helvetica, sans-serif;
-      }
-  </style>
+    <!-- Branch Metadata -->
+    <meta name="branch:deeplink:$deeplink_path" content="your_content_here">
+    <meta name="branch:deeplink:ECID" content="123abcECID">
+    <meta name="branch:deeplink:custom_string" content="helloWorld">
+
+    <!-- Load Branch Web SDK -->
+    <script>
+       (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode setRequestMetaData setAPIUrl getAPIUrl setDMAParamsForEEA".split(" "), 0);
+        // Initialize Branch and set initial view data if meta tags exist
+        branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq', function(err, data) {
+            var metaTags = document.querySelectorAll("meta[name^='branch:deeplink']");
+            if (metaTags.length > 0) {
+                var viewData = {data: {}};
+                metaTags.forEach(function(tag) {
+                    var key = tag.getAttribute("name").split(":")[2];
+                    var value = tag.getAttribute("content");
+                    viewData.data[key] = value;
+                });
+                branch.setBranchViewData(viewData);
+            }
+        });
+    </script>
+
+    <!-- Load My Script -->
+    <script src="script.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Test Website</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 <body>
-   <main>
-      <h1>My Journeys Testing Website</h1>
-      <p>A test website created for testing Journeys.</p>
-      <div class="button-container">
-         <button onclick="updateJourney()">Update Journey</button>
-      </div>
-   </main>
+    <main>
+        <h1>My Journeys Testing Website</h1>
+        <p>A test website created for testing Journeys.</p>
+        <div class="button-container">
+            <button onclick="updateJourney()">Update Journey</button>
+        </div>
+    </main>
 </body>
 </html>
