@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Branch Metadata -->
-    <meta name="branch:deeplink:$deeplink_path" content="your_content_here">
-    <meta name="branch:deeplink:ECID" content="123abcECID">
-    <meta name="branch:deeplink:custom_string" content="helloWorld">
-
     <!-- Load Branch Web SDK -->
-<!--     <script>
+    <script>
        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode setRequestMetaData setAPIUrl getAPIUrl setDMAParamsForEEA".split(" "), 0);
-        // Initialize Branch and set initial view data if meta tags exist
-        branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq', function(err, data) {
-            var metaTags = document.querySelectorAll("meta[name^='branch:deeplink']");
-            if (metaTags.length > 0) {
-                var viewData = {data: {}};
-                metaTags.forEach(function(tag) {
-                    var key = tag.getAttribute("name").split(":")[2];
-                    var value = tag.getAttribute("content");
-                    viewData.data[key] = value;
-                });
-                branch.setBranchViewData(viewData);
+        // Initialize Branch and set initial meta tags
+        branch.init(x'key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq', {
+            metadata: {
+                testKey: 'testValue',
+                promoCode: '123abc'
             }
-        }); -->
+        }, function(err, data) {
+            if (err) {
+                console.error('Branch SDK initialization failed:', err);
+            } else {
+                console.log('Branch SDK initialized successfully. Session data:', data);
+            }
+        });
     </script>
 
     <!-- Load My Script -->
