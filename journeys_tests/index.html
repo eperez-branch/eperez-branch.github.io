@@ -15,6 +15,19 @@
                 console.error('Branch SDK initialization failed:', err);
             } else {
                 console.log('Branch SDK initialized successfully. Session data:', data);
+                // Set Branch View Data after initialization
+                branch.setBranchViewData({
+                    tags: ['tag1', 'tag2'],
+                    data: {
+                        mydata: 'something',
+                        ecid: '123abc',
+                        '$deeplink_path': 'open/item/1234'
+                    }
+                }, function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
             }
         });
     </script>
