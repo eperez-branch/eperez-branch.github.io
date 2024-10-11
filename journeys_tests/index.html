@@ -1,61 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Load Branch Web SDK -->
     <script>
-       (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode setRequestMetaData setAPIUrl getAPIUrl setDMAParamsForEEA".split(" "), 0);
-        var userGroup = null; // This will store 'control' or 'test'
-
-        function determineGroup() {
-            // Simulating an async call with setTimeout and Math.random()
-            setTimeout(() => {
-                if (Math.random() > 0.5) {
-                    userGroup = 'control';
-                    alert("User is in control group");
-                } else {
-                    userGroup = 'test';
-                    alert("User is in test group");
-                    branch.closeJourney(function(err) {
-                        if (err) console.error("Failed to close Journey:", err);
-                        else console.log("Journey closed successfully");
-                    });
-                }
-            }, 1000); // Delay of 1 second to simulate network request
-        }
-
-        branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq', {}, function(err, data) {
-            if (err) {
-                console.error('Branch SDK initialization failed:', err);
-            } else {
-                console.log('Branch SDK initialized successfully. Session data:', data);
-                branch.setBranchViewData({
-                    tags: ['tag1', 'tag2'],
-                    data: {
-                        mydata: 'something',
-                        ecid: '123abc',
-                        '$deeplink_path': 'open/item/1234'
-                    }
-                });
+        (function(b,r,a,n,c,h,_,s,d,k){
+            if(!b[n]||!b[n]._q){
+                for(;s<_.length;)c(h,_[s++]);
+                d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";
+                k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);
+                b[n]=h;
             }
-        });
+        })(window, document, "script", "branch", function(b, r){
+            b[r]=function(){
+                b._q.push([r, arguments])
+            }
+        }, {_q:[], _v:1}, "addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode setRequestMetaData setAPIUrl getAPIUrl setDMAParamsForEEA".split(" "), 0);
 
-        function listener(event) {
+        // Initialize Branch
+        branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq');
+
+        // Listener for 'willShowJourney'
+        branch.addListener('willShowJourney', function(event) {
             console.log('Journey is about to be shown:', event);
-            if (userGroup === null) {
-                console.log("Group not determined yet. Holding off Journey display.");
-                branch.closeJourney(); // Prevent the Journey from showing until the group is determined
-            } else if (userGroup === 'test') {
-                console.log("User in test group, not showing Journey.");
-                branch.closeJourney();
-            }
-            // If userGroup is 'control', the Journey will display as usual
-        }
 
-        branch.addListener('willShowJourney', listener);
+            // Close the Journey immediately
+            branch.closeJourney(function(err) {
+                if (err) {
+                    console.error("Error closing the journey:", err);
+                } else {
+                    console.log("Journey closed successfully.");
+                }
+            });
+        });
     </script>
-
-    <!-- Load My Script -->
-    <script src="script.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Test Website</title>
@@ -71,12 +47,30 @@
         <h1>My Journeys Testing Website</h1>
         <p>A test website created for testing Journeys.</p>
         <div class="button-container">
-            <button onclick="determineGroup()">Determine Group</button>
-            <!-- Your new button for redirection -->
+            <button onclick="simulateAsyncCheck()">Determine Group</button>
+            <!-- Button for redirection -->
             <button onclick="location.href='https://eperez-branch.github.io/journeys_tests/redirection/'" type="button">
                 URL to Landing Page (Current Tab)
             </button>
         </div>
     </main>
+
+    <script>
+        function simulateAsyncCheck() {
+            console.log("Starting async check...");
+
+            // Simulate an asynchronous network request with a 2-second delay
+            setTimeout(function() {
+                if (Math.random() > 0.5) {
+                    console.log("Async check result: Control group (Show Journey)");
+                    branch.track('pageview', {
+                        'group': 'control'
+                    });
+                } else {
+                    console.log("Async check result: Test group (Do not show Journey)");
+                }
+            }, 2000); // Delay of 2 seconds
+        }
+    </script>
 </body>
 </html>
