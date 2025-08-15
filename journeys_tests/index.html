@@ -5,23 +5,33 @@
         // Load Branch
         (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-v2.86.1.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking qrCode".split(" "), 0);        
         
-        // Initialize Branch
-        branch.init('key_live_ozpgeobWoV1PyOAvLLf5lomdwva66WYq', function(err, data) {
-            console.log(err, data);
-        });
-
-        // Listener for 'willShowJourney'
-        branch.addListener('willShowJourney', function(event) {
-            console.log('Journey is about to be shown:', event);
-
-            // Close the Journey immediately
-            branch.closeJourney(function(err) {
+        // Make a helper so we can trigger Journeys on demand
+        function triggerJourney() {
+            // You can pass metadata as the 2nd arg if needed; null = none
+            branch.track('pageview', null, function(err) {
                 if (err) {
-                    console.error("Error closing the journey:", err);
+                    console.warn('branch.track(pageview) error:', err);
                 } else {
-                    console.log("Journey closed successfully.");
+                    console.log('branch.track(pageview) called.');
                 }
             });
+        }
+
+        // Initialize Branch
+        branch.init('key_live_ozpgeobWoV1PyOOvLLf5lomdwva66WYq', function(err, data) {
+            console.log('branch.init ->', { err, data });
+
+            // (Optional) Observe when a Journey actually shows
+            try {
+                branch.addListener('didShowJourney', function(payload) {
+                    console.log('didShowJourney fired:', payload);
+                });
+            } catch (e) {
+                console.debug('Could not register didShowJourney listener:', e);
+            }
+
+            // Trigger a Journey immediately after init
+            triggerJourney();
         });
     </script>
 
@@ -29,9 +39,9 @@
     <title>My Test Website</title>
     <meta charset="UTF-8">
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+        body { font-family: Arial, Helvetica, sans-serif; }
+        .button-container { display: flex; gap: 12px; flex-wrap: wrap; }
+        button { padding: 8px 12px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -40,29 +50,17 @@
         <p>A test website created for testing Journeys.</p>
         <div class="button-container">
             <button onclick="simulateAsyncCheck()">Determine Group</button>
-            <!-- Button for redirection -->
+
+            <!-- NEW: Button to trigger a Journey programmatically -->
+            <button onclick="triggerJourney()" type="button">
+                Show Journey (branch.track('pageview'))
+            </button>
+
+            <!-- Existing button for redirection -->
             <button onclick="location.href='https://eperez-branch.github.io/journeys_tests/redirection/'" type="button">
                 URL to Landing Page (Current Tab)
             </button>
         </div>
     </main>
-
-    <script>
-        function simulateAsyncCheck() {
-            console.log("Starting async check...");
-
-            // Simulate an asynchronous network request with a 2-second delay
-            setTimeout(function() {
-                if (Math.random() > 0.5) {
-                    console.log("Async check result: Control group (Show Journey)");
-                    branch.track('pageview', {
-                        'group': 'control'
-                    });
-                } else {
-                    console.log("Async check result: Test group (Do not show Journey)");
-                }
-            }, 2000); // Delay of 2 seconds
-        }
-    </script>
 </body>
 </html>
